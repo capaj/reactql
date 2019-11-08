@@ -4,15 +4,15 @@
 // IMPORTS
 
 /* Node */
-import path from "path";
+import path from 'path'
 
 /* NPM */
-import lodash from "lodash";
-import webpack from "webpack";
+import lodash from 'lodash'
+import webpack from 'webpack'
 
 // ----------------------------------------------------------------------------
 
-const root = path.resolve(__dirname, "..", "..");
+const root = path.resolve(__dirname, '..', '..')
 
 // Default merge customiser
 export function defaultMerger(
@@ -24,40 +24,40 @@ export function defaultMerger(
   _stack: any
 ) {
   // Merge rules
-  if (key === "rules" && [obj, src].every(v => Array.isArray(v))) {
+  if (key === 'rules' && [obj, src].every((v) => Array.isArray(v))) {
     src.forEach((v: webpack.Rule, _i: number) => {
       const existingTest = (obj as webpack.Rule[]).find(
-        rule => String(rule.test) === String(v.test)
-      );
+        (rule) => String(rule.test) === String(v.test)
+      )
 
       if (existingTest) {
-        lodash.mergeWith(existingTest, v, defaultMerger);
+        lodash.mergeWith(existingTest, v, defaultMerger)
       } else {
-        obj.push(v);
+        obj.push(v)
       }
-    });
+    })
 
-    return obj;
+    return obj
   }
 
   // By default, merge arrays
   if (Array.isArray(obj)) {
-    return obj.concat(src);
+    return obj.concat(src)
   }
 }
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.NODE_ENV === 'production'
 
 // RegExp for file types
 export const files = {
   fonts: /\.(woff|woff2|(o|t)tf|eot)$/i,
   images: /\.(jpe?g|png|gif|svg)$/i
-};
+}
 
 // Common config
 export default (_ssr: boolean /* <-- not currently used */) => {
   const common: webpack.Configuration = {
-    mode: isProduction ? "production" : "development",
+    mode: isProduction ? 'production' : 'development',
     module: {
       rules: [
         // Typescript
@@ -66,16 +66,17 @@ export default (_ssr: boolean /* <-- not currently used */) => {
           test: /\.(j|t)sx?$/i,
           use: [
             {
-              loader: "babel-loader",
+              loader: 'babel-loader',
               options: {
                 cacheDirectory: true,
-                presets: ["@babel/typescript", "@babel/react"],
+                presets: ['@babel/typescript', '@babel/react'],
                 plugins: [
-                  ["@babel/proposal-class-properties", { loose: true }],
-                  "@babel/proposal-object-rest-spread",
-                  "@babel/plugin-syntax-dynamic-import",
-                  "react-hot-loader/babel",
-                  "emotion"
+                  ['@babel/proposal-class-properties', { loose: true }],
+                  '@babel/proposal-object-rest-spread',
+                  '@babel/plugin-syntax-dynamic-import',
+                  '@babel/plugin-proposal-optional-chaining',
+                  'react-hot-loader/babel',
+                  'emotion'
                 ]
               }
             }
@@ -85,18 +86,18 @@ export default (_ssr: boolean /* <-- not currently used */) => {
     },
 
     output: {
-      publicPath: "/"
+      publicPath: '/'
     },
 
     resolve: {
       alias: {
-        "@": path.resolve(root, "src"),
-        "react-dom": "@hot-loader/react-dom"
+        '@': path.resolve(root, 'src'),
+        'react-dom': '@hot-loader/react-dom'
       },
-      extensions: [".mjs", ".ts", ".tsx", ".jsx", ".js", ".json"],
-      modules: [path.resolve(root, "node_modules")]
+      extensions: ['.mjs', '.ts', '.tsx', '.jsx', '.js', '.json'],
+      modules: [path.resolve(root, 'node_modules')]
     }
-  };
+  }
 
-  return common;
-};
+  return common
+}

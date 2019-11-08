@@ -4,6 +4,7 @@ query GetHackerNewsTopStories {
       id
       title
       url
+      
     }
   }
 }

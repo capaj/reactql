@@ -14,7 +14,7 @@ export const Count: React.FunctionComponent = () => {
   return (
     <>
       <Observer>
-        {() => <h3>Current count (from MobX): {store.count}</h3>}
+        {() => <h3>Current count (from bX): {store.count}</h3>}
       </Observer>
       <button onClick={() => store.count++}>Increment</button>
       <button onClick={() => (store.count = 0)}>Reset</button>

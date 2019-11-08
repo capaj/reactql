@@ -29,7 +29,7 @@ const Root: React.FunctionComponent = () => (
   <div>
     <Global styles={globalStyles} />
     <Helmet>
-      <title>ReactQL starter kit - edit me!</title>
+      <title>4Home</title>
     </Helmet>
     <ScrollTop>
       <Switch>

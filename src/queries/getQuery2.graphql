@@ -1,0 +1,9 @@
+query newStories{
+  hn {
+     newStories{
+      id
+      title
+      time
+    }
+  }
+}

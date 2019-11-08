@@ -2,10 +2,12 @@ type Story {
   id: String
   title: String
   url: String
+  time: Int
 }
 
 type HackerNews {
   topStories: [Story]
+  newStories: [Story]
 }
 
 type Query {

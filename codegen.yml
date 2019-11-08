@@ -10,3 +10,9 @@ generates:
   src/graphql/fragments.tsx:
     plugins:
       - fragment-matcher
+config:
+  withHooks: true
+  withHOC: false
+  withComponent: false
+  apolloReactHooksImportFrom: "react-apollo"
+  reactApolloVersion: 3

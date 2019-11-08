@@ -3,7 +3,7 @@
     // Incremental mode
     "incremental": true,
     // Target latest version of ECMAScript.
-    "target": "esnext",
+    "target": "es2020",
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     // Set module format
