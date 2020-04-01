@@ -1,12 +1,7 @@
 // ReactQL Hacker News GraphQL example
 
-// ----------------------------------------------------------------------------
-// IMPORTS
+import React, { FC } from 'react'
 
-/* NPM */
-import React from 'react'
-
-// Emotion styled component
 import styled from '@emotion/styled'
 
 /* Local */
@@ -35,7 +30,7 @@ const Story = styled('li')`
 // whatever the server has sent it - or, if it's a client-navigated route that
 // doesn't already have data from the server -- it'll display a loading message
 // while the data is being retrieved
-export const HackerNews: React.FunctionComponent = () => {
+export const HackerNews: FC = () => {
   const { data, error, loading } = useGetHackerNewsTopStoriesQuery()
   const rs = useNewStoriesQuery()
 

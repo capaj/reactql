@@ -10,7 +10,7 @@ const signals: NodeJS.Signals[] = [
   'SIGINT',
   'SIGQUIT',
   'SIGABRT',
-  'SIGTERM'
+  'SIGTERM',
 ]
 
 signals.forEach((s) => process.on(s, () => process.exit(0)))

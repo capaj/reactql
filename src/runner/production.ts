@@ -44,7 +44,7 @@ void (async () => {
   // Create an Output
   const output = new Output({
     client: new Stats(getStats(common.compiled.clientStats)),
-    server: new Stats(getStats(common.compiled.serverStats))
+    server: new Stats(getStats(common.compiled.serverStats)),
   })
 
   // Attach middleware

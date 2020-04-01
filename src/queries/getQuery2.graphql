@@ -1,6 +1,6 @@
-query newStories{
+query newStories {
   hn {
-     newStories{
+    newStories {
       id
       title
       time

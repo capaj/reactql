@@ -92,7 +92,7 @@ You can then import the query like we do in the [HackerNews demo component](src/
 
 ```ts
 // Query to get top stories from HackerNews
-import { GetHackerNewsTopStoriesComponent } from "@/graphql";
+import { GetHackerNewsTopStoriesComponent } from '@/graphql'
 ```
 
 And use it as follows:

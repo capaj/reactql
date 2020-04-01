@@ -1,16 +1,12 @@
 // ReactQL local state counter example
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-import React from "react";
-import { Observer, useObservable } from "mobx-react-lite";
+import React, { FC } from 'react'
+import { Observer, useObservable } from 'mobx-react-lite'
 
 // ----------------------------------------------------------------------------
 
-export const Count: React.FunctionComponent = () => {
-  const store = useObservable({ count: 0 });
+export const Count: FC = () => {
+  const store = useObservable({ count: 0 })
   return (
     <>
       <Observer>
@@ -19,5 +15,5 @@ export const Count: React.FunctionComponent = () => {
       <button onClick={() => store.count++}>Increment</button>
       <button onClick={() => (store.count = 0)}>Reset</button>
     </>
-  );
-};
+  )
+}

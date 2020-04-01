@@ -14,5 +14,16 @@ config:
   withHooks: true
   withHOC: false
   withComponent: false
-  apolloReactHooksImportFrom: "react-apollo"
+  apolloReactHooksImportFrom: "@apollo/react-hooks"
   reactApolloVersion: 3
+  scalars:
+    EmailAddressWithTLD: string
+    NonNegativeFloat: number
+    NonNegativeInt: number
+    PositiveInt: number
+    DateTime: string
+  namingConvention:
+    enumValues: keep
+hooks:
+  afterOneFileWrite:
+    - prettier --write

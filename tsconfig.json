@@ -22,7 +22,6 @@
     "baseUrl": ".",
     // Source paths
     "paths": {
-      "@/*": ["src/*"],
       "microseconds": ["types/microseconds.d.ts"]
     }
   },
