@@ -33,7 +33,7 @@ export interface IRule {
 function getExtensionSettings(ext: string): ModuleSettings[] {
   return [
     [`^(?!.*\\.global\\.${ext}$).*\\.${ext}$`, { modules: true }],
-    [`\\.global\\.${ext}$`, { modules: false }],
+    [`\\.global\\.${ext}$`, { modules: false }]
   ]
 }
 
@@ -41,26 +41,26 @@ function getExtensionSettings(ext: string): ModuleSettings[] {
 export const rules: IRule[] = [
   {
     ext: 'css',
-    use: [],
+    use: []
   },
   {
     ext: 's(c|a)ss',
     use: [
       {
-        loader: 'resolve-url-loader',
+        loader: 'resolve-url-loader'
       },
       {
         loader: 'sass-loader',
         options: {
-          sourceMap: true,
-        },
-      },
-    ],
+          sourceMap: true
+        }
+      }
+    ]
   },
   {
     ext: 'less',
-    use: ['less-loader'],
-  },
+    use: ['less-loader']
+  }
 ]
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -98,8 +98,8 @@ export default function* css(isClient = true) {
             sourceMap,
 
             // Specify modules options
-            ...modules,
-          },
+            ...modules
+          }
         },
 
         // Add PostCSS
@@ -112,19 +112,19 @@ export default function* css(isClient = true) {
                 // TODO - MAKE PLUGINS WORK WITH SASS!
                 require('postcss-preset-env')({
                   features: {
-                    autoprefixer: false,
-                  },
+                    autoprefixer: false
+                  }
                 }),
-                require('cssnano')(),
+                require('cssnano')()
               ]
             },
             // Enable sourcemaps in development
-            sourceMap,
-          },
+            sourceMap
+          }
         },
 
         // Copy over the loader's specific rules
-        ...loader.use,
+        ...loader.use
       ]
 
       // Yield the full rule
@@ -132,7 +132,7 @@ export default function* css(isClient = true) {
         test: new RegExp(test),
 
         // Remove all falsy values
-        use: use.filter((l) => l) as Loader[],
+        use: use.filter((l) => l) as Loader[]
       }
     }
   }

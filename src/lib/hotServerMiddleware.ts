@@ -128,7 +128,7 @@ function installSourceMapSupport(filesystem: typeof fs) {
         // Doesn't exist
         return ''
       }
-    },
+    }
   })
 }
 
@@ -182,7 +182,7 @@ function webpackHotServerMiddleware(multiCompiler: webpack.MultiCompiler) {
     // Create an `Output` instance, containing our client/server stats
     const output = new Output({
       client: new Stats(clientStatsJson),
-      server: new Stats(serverStats.toJson()),
+      server: new Stats(serverStats.toJson())
     })
 
     try {
