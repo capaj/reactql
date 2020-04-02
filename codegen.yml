@@ -1,6 +1,6 @@
 overwrite: true
-schema: "schema/schema.graphql"
-documents: "src/**/*.graphql"
+schema: 'schema/schema.graphql'
+documents: 'src/**/*.graphql'
 generates:
   src/graphql/index.tsx:
     plugins:
@@ -14,7 +14,7 @@ config:
   withHooks: true
   withHOC: false
   withComponent: false
-  apolloReactHooksImportFrom: "@apollo/react-hooks"
+  apolloReactHooksImportFrom: '@apollo/react-hooks'
   reactApolloVersion: 3
   scalars:
     EmailAddressWithTLD: string

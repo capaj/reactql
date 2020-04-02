@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
-import * as ApolloReactCommon from '@apollo/react-common'
-import * as ApolloReactHooks from 'react-apollo'
+import * as ApolloReactCommon from '@apollo/client'
+import * as ApolloReactHooks from '@apollo/react-hooks'
 export type Maybe<T> = T | null
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -33,9 +33,9 @@ export type Story = {
 export type GetHackerNewsTopStoriesQueryVariables = {}
 
 export type GetHackerNewsTopStoriesQuery = { __typename?: 'Query' } & {
-  hn: Maybe<
+  hn?: Maybe<
     { __typename?: 'HackerNews' } & {
-      topStories: Maybe<
+      topStories?: Maybe<
         Array<
           Maybe<{ __typename?: 'Story' } & Pick<Story, 'id' | 'title' | 'url'>>
         >
@@ -47,9 +47,9 @@ export type GetHackerNewsTopStoriesQuery = { __typename?: 'Query' } & {
 export type NewStoriesQueryVariables = {}
 
 export type NewStoriesQuery = { __typename?: 'Query' } & {
-  hn: Maybe<
+  hn?: Maybe<
     { __typename?: 'HackerNews' } & {
-      newStories: Maybe<
+      newStories?: Maybe<
         Array<
           Maybe<{ __typename?: 'Story' } & Pick<Story, 'id' | 'title' | 'time'>>
         >

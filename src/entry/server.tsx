@@ -15,8 +15,7 @@ import React from 'react'
 import { Context } from 'koa'
 
 // Apollo GraphQL
-import { ApolloProvider, getDataFromTree } from 'react-apollo'
-
+import { ApolloProvider } from '@apollo/react-hooks'
 // MobX state management
 import { useStaticRendering } from 'mobx-react-lite'
 
@@ -43,7 +42,7 @@ import Output from '@/lib/output'
 
 // Every byte sent back to the client is React; this is our main template
 import Html from '@/views/ssr'
-
+import { renderToStringWithData } from '@apollo/react-ssr'
 // ----------------------------------------------------------------------------
 
 // Types
@@ -76,9 +75,6 @@ export default function (output: Output) {
       </ApolloProvider>
     )
 
-    // Await GraphQL data coming from the API server
-    await getDataFromTree(components)
-
     // Handle 301/302 redirects
     if ([301, 302].includes(routerContext.status!)) {
       // 301 = permanent redirect, 302 = temporary
@@ -104,18 +100,19 @@ export default function (output: Output) {
     }
 
     // Create response HTML
-    const html = ReactDOMServer.renderToString(components)
+    const content = await renderToStringWithData(components)
 
+    const apolloStoreContents = client.extract()
     // Create the React render, and inject the `<head>` section
     // courtesy of React Helmet.
     const reactRender = ReactDOMServer.renderToString(
       <Html
         css={output.client.main('css')!}
         helmet={Helmet.renderStatic()}
-        html={html}
+        html={content}
         scripts={output.client.scripts()}
         window={{
-          __APOLLO__: client.extract(), // <-- GraphQL store
+          __APOLLO__: apolloStoreContents // <-- GraphQL store
         }}
       />
     )

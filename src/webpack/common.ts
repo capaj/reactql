@@ -51,7 +51,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 // RegExp for file types
 export const files = {
   fonts: /\.(woff|woff2|(o|t)tf|eot)$/i,
-  images: /\.(jpe?g|png|gif|svg)$/i,
+  images: /\.(jpe?g|png|gif|svg)$/i
 }
 
 // Common config
@@ -61,6 +61,11 @@ export default (_ssr: boolean /* <-- not currently used */) => {
     module: {
       rules: [
         // Typescript
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto'
+        },
         {
           exclude: /node_modules/,
           test: /\.(j|t)sx?$/i,
@@ -76,27 +81,27 @@ export default (_ssr: boolean /* <-- not currently used */) => {
                   '@babel/plugin-syntax-dynamic-import',
                   '@babel/plugin-proposal-optional-chaining',
                   'react-hot-loader/babel',
-                  'emotion',
-                ],
-              },
-            },
-          ],
-        },
-      ],
+                  'emotion'
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
 
     output: {
-      publicPath: '/',
+      publicPath: '/'
     },
 
     resolve: {
       alias: {
         '@': path.resolve(root, 'src'),
-        'react-dom': '@hot-loader/react-dom',
+        'react-dom': '@hot-loader/react-dom'
       },
       extensions: ['.mjs', '.ts', '.tsx', '.jsx', '.js', '.json'],
-      modules: [path.resolve(root, 'node_modules')],
-    },
+      modules: [path.resolve(root, 'node_modules')]
+    }
   }
 
   return common

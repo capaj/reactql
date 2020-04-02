@@ -12,7 +12,8 @@ import { createBrowserHistory } from 'history'
 import React from 'react'
 
 // HOC for enabling Apollo GraphQL `<Query>` and `<Mutation>`
-import { ApolloProvider } from 'react-apollo'
+
+import { ApolloProvider } from '@apollo/react-hooks'
 
 // Attach React to the browser DOM
 import ReactDOM from 'react-dom'

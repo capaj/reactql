@@ -2,10 +2,6 @@
 
 // Component to render the full HTML response in React
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
 import React from 'react'
 import { HelmetData } from 'react-helmet'
 
@@ -55,7 +51,7 @@ export default class Html extends React.PureComponent<IHtmlProps> {
                 (out, key) =>
                   (out += `window.${key}=${JSON.stringify(window[key])};`),
                 ''
-              ),
+              )
             }}
           />
         </body>

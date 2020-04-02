@@ -4,16 +4,21 @@
 // IMPORTS
 
 /* NPM */
+
+// import apolloCacheInMemory, {
+//   InMemoryCache,
+//   IntrospectionFragmentMatcher,
+// } from 'apollo-cache-inmemory'
+
 import {
-  InMemoryCache,
+  ApolloClient,
   NormalizedCacheObject,
-  IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory'
-import { ApolloClient } from '@apollo/client'
-import { ApolloLink, split } from 'apollo-link'
-import { onError } from 'apollo-link-error'
-import { HttpLink } from 'apollo-link-http'
-import { WebSocketLink } from 'apollo-link-ws'
+  InMemoryCache
+} from '@apollo/client'
+import { ApolloLink, split, HttpLink } from '@apollo/client'
+import { onError } from '@apollo/link-error'
+// import { BatchHttpLink } from '@apollo/link-batch-http'
+import { WebSocketLink } from '@apollo/link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
 
@@ -23,29 +28,31 @@ import introspectionQueryResultData from '../graphql/fragments'
 // ----------------------------------------------------------------------------
 
 // Match up fragments
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData,
-})
+// const fragmentMatcher = new IntrospectionFragmentMatcher({
+//   introspectionQueryResultData,
+// })
 
-export function createClient(): ApolloClient<NormalizedCacheObject> {
+export function createClient() {
   // Create the cache first, which we'll share across Apollo tooling.
   // This is an in-memory cache. Since we'll be calling `createClient` on
   // universally, the cache will survive until the HTTP request is
   // responded to (on the server) or for the whole of the user's visit (in
   // the browser)
-  const cache = new InMemoryCache({ fragmentMatcher })
+
+  const cache = new InMemoryCache()
 
   // Create a HTTP client (both server/client). It takes the GraphQL
   // server from the `GRAPHQL` environment variable, which by default is
   // set to an external playground at https://graphqlhub.com/graphql
   const httpLink = new HttpLink({
     credentials: 'same-origin',
-    uri: GRAPHQL,
+    uri: GRAPHQL
   })
 
   // If we're in the browser, we'd have received initial state from the
   // server. Restore it, so the client app can continue with the same data.
   if (!SERVER) {
+    console.log('restoring')
     cache.restore((window as any).__APOLLO__)
   }
 
@@ -54,6 +61,7 @@ export function createClient(): ApolloClient<NormalizedCacheObject> {
   // to tell Apollo how to handle GraphQL requests
   return new ApolloClient({
     cache,
+    fragmentMatcher: introspectionQueryResultData as any,
     link: ApolloLink.from([
       // General error handler, to log errors back to the console.
       // Replace this in production with whatever makes sense in your
@@ -87,15 +95,15 @@ export function createClient(): ApolloClient<NormalizedCacheObject> {
             new WebSocketLink(
               // Replace http(s) with `ws` for connecting via WebSockts
               new SubscriptionClient(GRAPHQL.replace(/^https?/, 'ws'), {
-                reconnect: true, // <-- automatically redirect as needed
+                reconnect: true // <-- automatically redirect as needed
               })
             ),
             // ... fall-back to HTTP for everything else
             httpLink
           )
-        : httpLink, // <-- just use HTTP on the server
+        : httpLink // <-- just use HTTP on the server
     ]),
     // On the server, enable SSR mode
-    ssrMode: SERVER,
+    ssrMode: SERVER
   })
 }
