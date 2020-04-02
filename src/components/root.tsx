@@ -1,16 +1,8 @@
-// Root entry point
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
 import React, { FC } from 'react'
 import Helmet from 'react-helmet'
 import { hot } from 'react-hot-loader/root'
 import { Route, Switch } from 'react-router-dom'
 import { Global } from '@emotion/core'
-
-/* Local */
 
 // Components
 import ScrollTop from '@/components/helpers/scrollTop'

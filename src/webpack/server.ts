@@ -1,16 +1,8 @@
-// Webpack (server)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import path from 'path'
 
-/* NPM */
 import { mergeWith } from 'lodash'
 import webpack from 'webpack'
 
-/* Local */
 import common, { defaultMerger, files } from './common'
 import css from './css'
 
@@ -20,7 +12,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 // Base server config
 const base: webpack.Configuration = {
-  entry: [path.resolve(__dirname, '..', 'entry', 'server.tsx')],
+  entry: [path.resolve(__dirname, '..', 'entry', 'serverMain.tsx')],
 
   module: {
     rules: [

@@ -3,13 +3,7 @@
   helper functions to obtain chunk names, etc.
 */
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
 import lodash from 'lodash'
-
-// ----------------------------------------------------------------------------
 
 export interface IStats {
   assetsByChunkName?: {

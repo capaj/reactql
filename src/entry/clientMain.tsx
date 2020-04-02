@@ -1,10 +1,3 @@
-// Client entry point
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-
 // Create browser history, for navigation a la single page apps
 import { createBrowserHistory } from 'history'
 
@@ -20,8 +13,6 @@ import ReactDOM from 'react-dom'
 
 // Single page app routing
 import { Router } from 'react-router-dom'
-
-/* Local */
 
 // Our main component, and the starting point for server/browser loading
 import Root from '@/components/root'

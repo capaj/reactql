@@ -1,12 +1,5 @@
-// Runner (development)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
 import chalk from 'chalk'
 
-/* Local */
 import hotServerMiddleware from '../lib/hotServerMiddleware'
 import { app, common, compiler, devServer } from './app'
 

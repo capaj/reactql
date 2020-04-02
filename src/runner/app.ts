@@ -1,13 +1,5 @@
-// Runner (app)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import fs from 'fs'
 import path from 'path'
-
-/* NPM */
 
 // Koa 2 web server.  Handles incoming HTTP requests, and will serve back
 // the React render, or any of the static assets being compiled
@@ -37,7 +29,6 @@ import ora from 'ora'
 // Lodash utility for merging objects
 import { mergeWith } from 'lodash'
 
-/* Local */
 import clientConfig from '../webpack/client'
 import serverConfig from '../webpack/server'
 import staticConfig from '../webpack/static'

@@ -1,12 +1,5 @@
-// Server entrypoint
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-
 // Implement a global `fetch()` polyfill, for Apollo requests
-import 'cross-fetch/polyfill'
+// import 'cross-fetch/polyfill'
 
 // React for UI
 import React from 'react'
@@ -28,8 +21,6 @@ import Helmet from 'react-helmet'
 
 // React SSR routers
 import { StaticRouter } from 'react-router'
-
-/* Local */
 
 // Root component
 import Root from '@/components/root'

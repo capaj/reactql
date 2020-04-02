@@ -1,15 +1,7 @@
-// Runner (static)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import path from 'path'
 
-/* NPM */
 import chalk from 'chalk'
 
-/* Local */
 import { build, common, app, staticCompiler, devServer } from './app'
 import clientConfig from '../webpack/client'
 

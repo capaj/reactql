@@ -27,14 +27,9 @@
   SOFTWARE.
 */
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import fs from 'fs'
 import path from 'path'
 
-/* NPM */
 import Koa from 'koa'
 import requireFromString from 'require-from-string'
 import sourceMapSupport from 'source-map-support'

@@ -1,13 +1,6 @@
 // ReactQL example page - delete this folder for your own project!
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-
 import React from 'react'
-
-/* Local */
 
 // Counter, controlled by local Apollo state
 import { Count } from './count'

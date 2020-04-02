@@ -1,19 +1,11 @@
-// Webpack (client)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import path from 'path'
 
-/* NPM */
 import CompressionPlugin from 'compression-webpack-plugin'
 import { mergeWith } from 'lodash'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import webpack from 'webpack'
 const BrotliCompression = require('brotli-webpack-plugin')
 
-/* Local */
 import common, { defaultMerger, files } from './common'
 import css, { rules } from './css'
 
@@ -24,7 +16,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 // Base client config
 const base: webpack.Configuration = {
   // Entry
-  entry: [path.resolve(__dirname, '..', 'entry', 'client.tsx')],
+  entry: [path.resolve(__dirname, '..', 'entry', 'clientMain.tsx')],
 
   // Name
   name: 'client',

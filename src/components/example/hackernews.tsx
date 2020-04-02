@@ -4,8 +4,6 @@ import React, { FC } from 'react'
 
 import styled from '@emotion/styled'
 
-/* Local */
-
 // Query to get top stories from HackerNews
 import { useGetHackerNewsTopStoriesQuery, useNewStoriesQuery } from '@/graphql'
 

@@ -1,15 +1,7 @@
-// Runner (production)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import fs from 'fs'
 
-/* NPM */
 import chalk from 'chalk'
 
-/* Local */
 import Output from '../lib/output'
 import Stats, { IStats } from '../lib/stats'
 import { app, build, common } from './app'

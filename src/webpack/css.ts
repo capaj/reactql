@@ -1,9 +1,3 @@
-// Webpack (CSS style loading)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { Loader } from 'webpack'
 

@@ -1,10 +1,5 @@
 // Apollo GraphQL client
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-
 // import apolloCacheInMemory, {
 //   InMemoryCache,
 //   IntrospectionFragmentMatcher,
@@ -22,7 +17,6 @@ import { WebSocketLink } from '@apollo/link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
 
-/* Local */
 import introspectionQueryResultData from '../graphql/fragments'
 
 // ----------------------------------------------------------------------------

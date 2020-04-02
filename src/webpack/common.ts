@@ -1,12 +1,5 @@
-// Webpack (common)
-
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* Node */
 import path from 'path'
 
-/* NPM */
 import lodash from 'lodash'
 import webpack from 'webpack'
 

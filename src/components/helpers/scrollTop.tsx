@@ -1,9 +1,3 @@
-// Scroll to the top of the window
-
-// -----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
 import React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 
