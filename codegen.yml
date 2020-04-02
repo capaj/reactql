@@ -1,6 +1,6 @@
 overwrite: true
-schema: "schema/schema.graphql"
-documents: "src/**/*.graphql"
+schema: 'schema/schema.graphql'
+documents: 'src/**/*.graphql'
 generates:
   src/graphql/index.tsx:
     plugins:
@@ -10,3 +10,20 @@ generates:
   src/graphql/fragments.tsx:
     plugins:
       - fragment-matcher
+config:
+  withHooks: true
+  withHOC: false
+  withComponent: false
+  apolloReactHooksImportFrom: '@apollo/react-hooks'
+  reactApolloVersion: 3
+  scalars:
+    EmailAddressWithTLD: string
+    NonNegativeFloat: number
+    NonNegativeInt: number
+    PositiveInt: number
+    DateTime: string
+  namingConvention:
+    enumValues: keep
+hooks:
+  afterOneFileWrite:
+    - prettier --write

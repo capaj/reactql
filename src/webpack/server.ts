@@ -1,26 +1,18 @@
-// Webpack (server)
+import path from 'path'
 
-// ----------------------------------------------------------------------------
-// IMPORTS
+import { mergeWith } from 'lodash'
+import webpack from 'webpack'
 
-/* Node */
-import path from "path";
-
-/* NPM */
-import { mergeWith } from "lodash";
-import webpack from "webpack";
-
-/* Local */
-import common, { defaultMerger, files } from "./common";
-import css from "./css";
+import common, { defaultMerger, files } from './common'
+import css from './css'
 
 // ----------------------------------------------------------------------------
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.NODE_ENV === 'production'
 
 // Base server config
 const base: webpack.Configuration = {
-  entry: [path.resolve(__dirname, "..", "entry", "server.tsx")],
+  entry: [path.resolve(__dirname, '..', 'entry', 'serverMain.tsx')],
 
   module: {
     rules: [
@@ -30,10 +22,10 @@ const base: webpack.Configuration = {
         test: files.images,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             query: {
               emitFile: false,
-              name: `assets/img/[name]${isProduction ? ".[hash]" : ""}.[ext]`
+              name: `assets/img/[name]${isProduction ? '.[hash]' : ''}.[ext]`
             }
           }
         ]
@@ -44,10 +36,10 @@ const base: webpack.Configuration = {
         test: files.fonts,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             query: {
               emitFile: false,
-              name: `assets/fonts/[name]${isProduction ? ".[hash]" : ""}.[ext]`
+              name: `assets/fonts/[name]${isProduction ? '.[hash]' : ''}.[ext]`
             }
           }
         ]
@@ -56,14 +48,14 @@ const base: webpack.Configuration = {
   },
 
   // Name
-  name: "server",
+  name: 'server',
 
   // Set output
   output: {
-    filename: "../server.js",
-    libraryTarget: "commonjs2",
-    path: path.resolve(__dirname, "..", "..", "dist", "public"),
-    publicPath: "/"
+    filename: '../server.js',
+    libraryTarget: 'commonjs2',
+    path: path.resolve(__dirname, '..', '..', 'dist', 'public'),
+    publicPath: '/'
   },
 
   // Plugins
@@ -77,7 +69,7 @@ const base: webpack.Configuration = {
     new webpack.BannerPlugin({
       banner: `require("source-map-support").install();`,
       entryOnly: false,
-      include: ["server.js"],
+      include: ['server.js'],
       raw: true
     }),
 
@@ -91,27 +83,27 @@ const base: webpack.Configuration = {
   ],
 
   resolve: {
-    modules: [path.resolve(__dirname, "..", "..", "node_modules")]
+    modules: [path.resolve(__dirname, '..', '..', 'node_modules')]
   },
 
   // Target
-  target: "node"
-};
+  target: 'node'
+}
 
 // Development config
 const dev: webpack.Configuration = {
-  devtool: "eval-source-map"
-};
+  devtool: 'cheap-module-source-map'
+}
 
 // Production config
 const prod: webpack.Configuration = {
-  devtool: "source-map"
-};
+  devtool: 'source-map'
+}
 
 export default mergeWith(
   {},
   common(true),
   base,
-  process.env.NODE_ENV === "production" ? prod : dev,
+  process.env.NODE_ENV === 'production' ? prod : dev,
   defaultMerger
-);
+)

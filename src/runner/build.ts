@@ -1,19 +1,12 @@
-// Runner (production)
+import chalk from 'chalk'
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-import chalk from "chalk";
-
-/* Local */
-import { build, common } from "./app";
+import { build, common } from './app'
 
 // ----------------------------------------------------------------------------
 
-common.spinner.info(chalk.bgBlue("Build mode"));
+common.spinner.info(chalk.bgBlue('Build mode'))
 
 void (async () => {
-  await build();
-  common.spinner.succeed("Finished building");
-})();
+  await build()
+  common.spinner.succeed('Finished building')
+})()

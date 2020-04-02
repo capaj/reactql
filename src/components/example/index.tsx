@@ -1,44 +1,37 @@
 // ReactQL example page - delete this folder for your own project!
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-
-import React from "react";
-
-/* Local */
+import React from 'react'
 
 // Counter, controlled by local Apollo state
-import { Count } from "./count";
+import { Count } from './count'
 
 // Hacker News GraphQL example
-import { HackerNews } from "./hackernews";
+import { HackerNews } from './hackernews'
 
 // ----------------------------------------------------------------------------
 
 interface IIndexState {
-  dynamic: React.SFC | null;
+  dynamic: React.SFC | null
 }
 
 // Say hello from GraphQL, along with a HackerNews feed fetched by GraphQL
 class Index extends React.PureComponent<{}, IIndexState> {
   public state = {
     dynamic: null
-  };
+  }
 
   public componentDidMount = async () => {
     // Fetch the component dynamically
-    const dynamic = await import("./dynamic");
+    const dynamic = await import('./dynamic')
 
     // ... and keep ahold of it locally
     this.setState({
       dynamic: dynamic.default
-    });
-  };
+    })
+  }
 
   public render() {
-    const DynamicComponent = this.state.dynamic || (() => <h2>Loading...</h2>);
+    const DynamicComponent = this.state.dynamic || (() => <h2>Loading...</h2>)
 
     return (
       <>
@@ -48,8 +41,8 @@ class Index extends React.PureComponent<{}, IIndexState> {
         <Count />
         <HackerNews />
       </>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index

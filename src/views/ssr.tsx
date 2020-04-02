@@ -2,31 +2,27 @@
 
 // Component to render the full HTML response in React
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-import React from "react";
-import { HelmetData } from "react-helmet";
+import React from 'react'
+import { HelmetData } from 'react-helmet'
 
 // ----------------------------------------------------------------------------
 
 // Types
 
 export interface IHtmlProps {
-  css?: string;
-  helmet: HelmetData;
-  html: string;
-  scripts: string[];
-  styles?: Array<React.ReactElement<{}>>;
+  css?: string
+  helmet: HelmetData
+  html: string
+  scripts: string[]
+  styles?: Array<React.ReactElement<{}>>
   window?: {
-    [key: string]: object;
-  };
+    [key: string]: object
+  }
 }
 
 export default class Html extends React.PureComponent<IHtmlProps> {
   public render() {
-    const { css, helmet, html, scripts, styles, window = {} } = this.props;
+    const { css, helmet, html, scripts, styles, window = {} } = this.props
     return (
       <html
         lang="en"
@@ -54,15 +50,15 @@ export default class Html extends React.PureComponent<IHtmlProps> {
               __html: Object.keys(window).reduce(
                 (out, key) =>
                   (out += `window.${key}=${JSON.stringify(window[key])};`),
-                ""
+                ''
               )
             }}
           />
         </body>
-        {scripts.map(script => (
+        {scripts.map((script) => (
           <script key={script} src={script} />
         ))}
       </html>
-    );
+    )
   }
 }

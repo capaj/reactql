@@ -13,18 +13,14 @@
   styles that apply to all pages.
 /*
 
-// ----------------------------------------------------------------------------
-// IMPORTS
 
 /* NPM */
-import { css } from "@emotion/core";
-
-/* Local */
+import { css } from '@emotion/core'
 
 // Import global SASS styles that you want to be rendered into the
 // resulting `main.css` file included with the initial render. If you don't
 // want a CSS file to be generated, you can comment out this line
-import "./styles.global.scss";
+import './styles.global.scss'
 
 // ----------------------------------------------------------------------------
 
@@ -32,6 +28,6 @@ import "./styles.global.scss";
 export default css`
   /* Make all <h1> tags orange  */
   h1 {
-    background-color: orange;
+    background-color: bisque;
   }
-`;
+`

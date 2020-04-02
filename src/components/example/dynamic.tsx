@@ -1,19 +1,14 @@
 // Dynamic component that's loaded by `await import("./dynamic")`
 
-// ----------------------------------------------------------------------------
-// IMPORTS
-
-/* NPM */
-
-import React from "react";
+import React, { FC } from 'react'
 
 // ----------------------------------------------------------------------------
 
 // Say hello from GraphQL, along with a HackerNews feed fetched by GraphQL
-const Dynamic: React.FunctionComponent = () => (
+const Dynamic: FC = () => (
   <>
     <h2>This component was loaded dynamically!</h2>
   </>
-);
+)
 
-export default Dynamic;
+export default Dynamic
