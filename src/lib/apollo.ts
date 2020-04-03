@@ -4,7 +4,7 @@
 //   InMemoryCache,
 //   IntrospectionFragmentMatcher,
 // } from 'apollo-cache-inmemory'
-
+import fetch from 'node-fetch'
 import {
   ApolloClient,
   NormalizedCacheObject,
@@ -40,7 +40,8 @@ export function createClient() {
   // set to an external playground at https://graphqlhub.com/graphql
   const httpLink = new HttpLink({
     credentials: 'same-origin',
-    uri: GRAPHQL
+    uri: GRAPHQL,
+    fetch
   })
 
   // If we're in the browser, we'd have received initial state from the
